@@ -4,14 +4,18 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <LangVersion>8.0</LangVersion>
+    <NullableReferenceTypes>true</NullableReferenceTypes>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Author.xaml" />
+    <PackageReference Include="Lamar" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lamar" Version="2.0.1" />
+    <ProjectReference Include="..\ShatteredLibrary.Core\ShatteredLibrary.Core.csproj" />
+    <ProjectReference Include="..\ShatteredLibrary.DAL\ShatteredLibrary.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,16 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Author.xaml.cs">
-      <DependentUpon>Author.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <None Update="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Author.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
+  
 </Project>
